@@ -26,18 +26,50 @@ sudo apt autoremove -y
 
 ## STEP 2: Python 3.12 Installation
 
-```bash
-# Install Python 3.12 (comes with Ubuntu 24.04)
-sudo apt install -y python3.12 python3.12-venv python3.12-dev python3-pip
+**Note:** Ubuntu 24.04 LTS comes with Python 3.12 pre-installed. If you need the separate packages, use the deadsnakes PPA.
 
-# Verify Python version
-python3 --version
+### Option 1: Use System Python (Recommended for Ubuntu 24.04)
+```bash
+# Check system Python version
+python3 --version  # Should be 3.12.x
 
 # Verify pip
 python3 -m pip --version
 
-# Set Python 3.12 as default (optional)
+# Create virtual environment (works with system Python)
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Option 2: Install Python 3.12 from Deadsnakes PPA
+```bash
+# Add deadsnakes PPA
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+
+# Update package list
+sudo apt update
+
+# Install Python 3.12 packages
+sudo apt install -y python3.12 python3.12-venv python3.12-dev python3-pip
+
+# Set as default (optional)
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1
+
+# Verify
+python3 --version
+python3 -m pip --version
+```
+
+### Option 3: If Package Not Found (Fallback)
+```bash
+# Use system Python directly
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip setuptools wheel
+
+# Verify it's working
+python3 --version
+pip --version
 ```
 
 ---

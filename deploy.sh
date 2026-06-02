@@ -88,17 +88,30 @@ print_success "Cleanup complete"
 
 print_header "STEP 2: PYTHON 3.12 INSTALLATION"
 
-print_step "Installing Python 3.12 and dependencies..."
-sudo apt install -y \
-    python3.12 \
-    python3.12-venv \
-    python3.12-dev \
-    python3-pip
-
-print_success "Python 3.12 installed"
-
-# Set Python 3.12 as default
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1 2>/dev/null || true
+# Check if Python 3.12 is already installed
+if command -v python3.12 &> /dev/null; then
+    print_success "Python 3.12 already installed"
+elif command -v python3 &> /dev/null; then
+    PYTHON_VERSION=$(python3 --version | cut -d' ' -f2)
+    if [[ $PYTHON_VERSION == 3.12* ]]; then
+        print_success "Python 3.12 already installed as python3 (version $PYTHON_VERSION)"
+    fi
+else
+    # Try to install from deadsnakes PPA
+    print_step "Adding deadsnakes PPA for Python 3.12..."
+    sudo add-apt-repository -y ppa:deadsnakes/ppa 2>/dev/null || true
+    sudo apt update
+    
+    print_step "Installing Python 3.12 and dependencies..."
+    sudo apt install -y \
+        python3.12 \
+        python3.12-venv \
+        python3.12-dev \
+        python3-pip || {
+        print_error "Could not install Python 3.12 from PPA"
+        print_step "Using system Python 3 instead..."
+    }
+fi
 
 # Verify Python
 PYTHON_CHECK=$(python3 --version)

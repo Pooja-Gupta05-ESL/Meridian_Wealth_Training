@@ -81,28 +81,55 @@ Expected output for Python: `Python 3.12.x` (Ubuntu 24.04 comes with Python 3.12
 
 ## Python 3.12 Installation
 
-### Option 1: Use Default Python 3.12 (Recommended for Ubuntu 24.04)
-```bash
-# Ubuntu 24.04 comes with Python 3.12, so just verify it
-python3 --version
-python3.12 --version
+### Important: Ubuntu 24.04 LTS comes with Python 3.12 pre-installed
 
-# Create symlink for convenience (optional)
-sudo ln -s /usr/bin/python3.12 /usr/bin/python
+**Option 1: Use Default Python 3.12 (Recommended - FASTEST)**
+```bash
+# Ubuntu 24.04 comes with Python 3.12, verify it's installed
+python3 --version
+# Expected output: Python 3.12.x
+
+# Verify pip is available
+python3 -m pip --version
+
+# You're ready to go! No additional installation needed.
+# Just create your virtual environment with:
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-### Option 2: Install Python 3.12 from Source (if needed)
+### Option 2: Install Python 3.12 Packages from Deadsnakes PPA
+If you need the individual python3.12 packages:
 ```bash
-# Install build tools
-sudo apt install -y python3.12 python3.12-venv python3.12-dev
+# Add deadsnakes PPA
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+
+# Update package manager
+sudo apt update
+
+# Install Python 3.12 packages
+sudo apt install -y python3.12 python3.12-venv python3.12-dev python3-pip
+
+# Set Python 3.12 as default (optional)
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1
 
 # Verify
 python3.12 --version
+python3.12 -m pip --version
 ```
 
-### Verify pip
+### Option 3: Fallback - If Packages Not Found
+If neither Option 1 nor Option 2 work, use system Python:
 ```bash
+# Simply use system Python
+python3 -m venv venv
+source venv/bin/activate
+
+# Verify pip
 python3 -m pip --version
+
+# Upgrade pip, setuptools, wheel
+pip install --upgrade pip setuptools wheel
 ```
 
 ---
