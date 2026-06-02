@@ -1,0 +1,176 @@
+# Security & Private Keys
+*.pem
+*.key
+*.ppk
+*.pub
+*.crt
+*.cert
+id_rsa
+id_ed25519
+authorized_keys
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual Environments
+.venv
+venv/
+ENV/
+env/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+.settings/
+*.code-workspace
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.log
+.AppleDouble
+.LSOverride
+._*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+meridian_wealth.db
+*.dbm
+*.gdbm
+
+# Node (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Testing & Coverage
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Celery
+celerybeat-schedule
+
+# SageMath parsed files
+.sage.py
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# Temporary files
+*.tmp
+*.temp
+*.backup
+*.bak
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Project Specific
+*.pycache
+local_settings.py
+/media/
+/static/
+/staticfiles/
+/uploads/
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+*.cache
+
+# Build output
+dist/
+build/
+
+# Development
+.devcontainer/
+dev-requirements.txt
+
+# Sensitive Data
+secrets.json
+credentials.json
+config_prod.py
+
+# Vector DB & Embeddings (optional - comment out if you want to track these)
+# faiss_index/
+# *.index
+
+# API Keys & Credentials
+api_keys.txt
+credentials.txt
+tokens.json
+
+# Temporary uploads
+temp/
+tmp/
+uploads/tmp/

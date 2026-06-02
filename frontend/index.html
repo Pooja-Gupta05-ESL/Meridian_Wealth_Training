@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meridian Wealth AI Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/chat.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="brand-section">
+            <div class="logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="url(#gradient)"/>
+                <path d="M12 28V12M20 28V8M28 28V15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40">
+                    <stop offset="0%" stop-color="#6366f1"/>
+                    <stop offset="100%" stop-color="#8b5cf6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div>
+              <h1>Meridian Wealth</h1>
+              <p>AI Financial Advisory</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="/" class="nav-link active">
+              <span class="nav-icon">💬</span>
+              Chat
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="chat-container">
+          <!-- Chat Messages -->
+          <div class="chat-messages" id="chat-log" aria-live="polite"></div>
+
+          <!-- Chat Input Area -->
+          <div class="chat-input-wrapper">
+            <form id="chat-form" class="chat-form">
+              <div class="input-section">
+                <div class="form-group">
+                  <label for="client-name">Client Name</label>
+                  <input
+                    id="client-name"
+                    name="client-name"
+                    type="text"
+                    placeholder="e.g., Rajesh (CLT-001)"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="form-group full-width">
+                  <label for="message">Your Question</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Ask about portfolio allocations, risk assessment, policy compliance, market trends..."
+                    required
+                  ></textarea>
+                </div>
+                <button id="send-btn" type="submit" class="btn-send">
+                  <span>Send Message</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar">
+          <!-- Status Card -->
+          <div class="sidebar-card status-card">
+            <div class="card-header">
+              <h3>System Status</h3>
+              <div class="status-indicator">
+                <span id="api-status-dot" class="status-dot"></span>
+                <span id="api-status-label">Checking...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent Card -->
+          <div class="sidebar-card agent-card">
+            <div class="card-header">
+              <h3>Agent Information</h3>
+            </div>
+            <div class="card-content">
+              <div class="info-row">
+                <span class="info-label">Name</span>
+                <span class="info-value" id="agent-name">Loading...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Version</span>
+                <span class="info-value" id="agent-version">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools Card -->
+          <div class="sidebar-card tools-card">
+            <div class="card-header">
+              <h3>Available Tools</h3>
+            </div>
+            <div class="card-content">
+              <ul class="tools-list" id="agent-tools"></ul>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/js/chat.js" defer></script>
+  </body>
+</html>
